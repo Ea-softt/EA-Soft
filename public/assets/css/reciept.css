@@ -1,0 +1,249 @@
+
+body{
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	font-size: 16px;
+	width: 100%;
+	/*background: rgb(204, 204, 204);*/
+	font-family: 'Roboto Condensed', sans-serif;
+}
+
+h2, h4, p {
+	margin: 0;
+}
+
+.page {
+	background: #fff;
+	display: block;
+	margin: 0rem auto;
+	position: relative;
+	box-shadow:0 0 5px rgba(0, 0, 0,0.1);
+
+}
+
+.page[size="A4"] {
+	width: 400px;
+	
+	overflow-x: hidden;
+
+}
+
+
+/*Top Section*/
+.head {
+	color: white;
+	margin-top:-28px;
+
+	background-color: #6a1b9a;
+}
+
+
+.head, .head1{
+	color: white;
+}
+
+.total1{
+
+	width: 10px;
+	padding-left: 80px;
+	
+}
+
+.footnote{
+	text-align: center;
+	font-weight: bold;
+	font-size: 15px;
+	font-style: italic;
+}
+
+.easoft{
+	border: 2px solid black;
+}
+
+
+/*.top-section h4 {
+	font-size: 18px;
+	margin-bottom:2px;
+	font-weight: 500;
+}
+
+.top-section .contact,
+.top-section .address {
+	width: 50%;
+	height: 100%;
+	float: left;
+}
+
+.top-section .address-content {
+	max-width: 275px;
+}
+
+.top-section p{
+	font-weight: 400;
+	font-size: 15px;
+}
+
+.contact .contact-content {
+	max-width: 240px;
+	float: right;
+	margin-top: 32px;
+}
+ 
+ .contact-content .email,
+.contact-content .number {
+	display: block;
+}
+
+.contact-content .email span, 
+.contact-content .number span {
+	float: right;
+	margin-left: 20px;
+}
+
+
+
+
+
+
+  .billing-invoice {
+  	padding: 20px;
+  	font-size: 20px;
+  	margin-bottom:15px;
+
+  }
+
+  .billing-invoice .title {
+  	font-weight: 400;
+  	float: left;
+  }
+
+
+  .billing-invoice .des {
+  	font-weight: 400;
+  	float: right;
+  }
+
+
+  .billing-invoice .code {
+  	font-weight: 700;
+  	text-align: right;
+  }
+
+
+  .billing-invoice .issue {
+  	text-align: right;
+  	font-size: 15px;
+  }
+
+/*Billing To*/
+
+
+/*Bottom Secton*/
+
+
+
+.bottom-section{
+	border-style: dotted solid double;
+
+	margin-top: 10px;
+	padding: 5px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+
+}
+
+
+
+
+
+.billing-to {
+	padding: 5px;
+	margin-top: 5px;
+
+
+}
+
+.billing-to .title {
+	font-weight:600;
+	font-size:25px;
+	margin-bottom: 7px;
+}
+
+.billing-to .billed-sec {
+	font-weight: 500;
+	width: 50%;
+	float: left;
+	font-size: 15px;
+	margin-bottom: 25px;
+}
+
+.billing-to .sub-title,
+.billing-to .name {
+	font-weight: 500;
+	font-size: 15px;
+	margin-bottom: 5px;
+}
+
+.billing-to .ship-add {
+	max-width: 300px;
+}
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Invoice Table*/
+/*.tablet{
+	padding: 0 20px;
+
+}
+
+.tablet table{
+	width: 100%;
+
+}
+
+.tablet table, th, td {
+	padding: 5px;
+	text-align: center;
+	border: 1px solid #616161;
+	border-collapse: collapse; 
+}*/
+
+/*.tablet tr th {
+	font-size: 18px;
+	font-weight: 400;
+
+}
+
+.tablet table tr:first-child {
+	color: #fff;
+	background-color: #6a1b9a;
+
+}
+
+.tablet tr th:nth-child(2),
+.tablet tr td:nth-child(2){
+	text-align: left;
+	width: 130px;
+}
+*/
