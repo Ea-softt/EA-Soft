@@ -9,15 +9,16 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Session;
 
 class AuthenticatedSessionController extends Controller
-{
+{ 
     /**
      * Display the login view.
      */
     public function create(): View
     {
-        return view('auth.login');
+        return view('/auth.login'); 
     }
 
     /**
@@ -28,6 +29,14 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+
+        if($request->user()->role === 'admin'){
+            return redirect()->intended('admin/dashboard')->with('error','Admin Login Successfully');
+             
+        }elseif($request->user()->role === 'customer'){
+            return redirect()->intended('customer/dashboard'); 
+        }
+
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }

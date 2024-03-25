@@ -72,8 +72,8 @@ ul li{
 	float: right;
 }
 #product_area{
-	background-color: white;
-	border:2px solid black;
+	background-color: greenyellow;
+	border:8px solid black;
 	margin-top: 0px;
 }
 #enter_area{

@@ -7,6 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
      <title>EA-Soft System</title>
-     <link  rel="shortcut icon" type="image/icon" href="img/Ea-Soft.ico">
+     <link  rel="shortcut icon" type="image/icon" href="{{ /storage/files/Ea-Soft.ico }}">
        
     {{-- //<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" --}}

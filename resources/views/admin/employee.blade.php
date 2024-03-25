@@ -1,6 +1,6 @@
 @extends('master')
 @section("content")
-
+@section("title") {{ 'Employees' }} @endsection
 <main class="w-100">
     
 	<div class="col-lg-12">
@@ -41,8 +41,8 @@
 </div>
 
 
-@include("update_employee")
-@include("employeeform")
+@include("admin/update_employee")
+@include("admin/employeeform")
 
  
 {{-- employeeform --}}

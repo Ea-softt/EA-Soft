@@ -1,6 +1,6 @@
   <!-- Modal -->
-  <div class="modal fade large" id="updatecustomer" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <form action="" method="POST" class="update_customer_form"  id="update_customer_form">
+  <div class="modal fade large" id="updatesupplier" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <form action="" method="POST" class="update_supplier_form"  id="update_supplier_form">
       @csrf
 
       
@@ -9,7 +9,7 @@
     <div class="modal-dialog modal-lg small" role="document">
       <div class="modal-content">
         <div class="modal-header bg-success">
-          <h5 class="modal-title text-white" id="updatecustomerLabel">Update Customer</h5>
+          <h5 class="modal-title text-white" id="updatesupplierLabel">Update Supplier</h5>
           <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -23,20 +23,20 @@
           
             <div class="form-group">
                 <label class="">ID:</label>
-                <input class="form-control"  type="text" id="up_id" name="up_id" placeholder="First Name"  value="<?php isset ($Employer)? $Employer :''?>">			
-                <span class="text-danger error-text upfname_error"></span>
+                <input class="form-control"  type="text" id="up_id" name="up_id" placeholder="First Name" readonly>			
+                <span class="text-danger error-text upid_error"></span>
               </div>
 
             <div class="form-group">
-                <label class="">First Name:</label>
-                <input class="form-control"  type="text" id="upfname" name="upfname" placeholder="First Name"  value="<?php isset ($Employer)? $Employer :''?>">			
-                <span class="text-danger error-text upfname_error"></span>
+                <label class="">Company Name:</label>
+                <input class="form-control"  type="text" id="upcompanyname" name="upcompanyname" placeholder="First Name"  value="<?php isset ($Employer)? $Employer :''?>">			
+                <span class="text-danger error-text upcompanyname_error"></span>
               </div>
       
               <div class="form-group">
-                <label class="">Last Name:</label>
-                <input class="form-control"  type="text" id="uplname" name="uplname" placeholder="Last Name"  value="<?php isset ($Employer)? $Employer :''?>">			
-                <span class="text-danger error-text uplname_error"></span>
+                <label class="">Full Name:</label>
+                <input class="form-control"  type="text" id="upfullname" name="upfullname" placeholder="Last Name"  value="<?php isset ($Employer)? $Employer :''?>">			
+                <span class="text-danger error-text upfullname_error"></span>
               </div>
       
                         
@@ -60,7 +60,7 @@
 
           </div>
           <div class="modal-footer btnn">
-        <button type="submit" class="btn btnn btn-primary update_customer_btn" id='upsubmit'><i class="fas fa-thumbs-up">&nbsp&nbsp</i>Update</button>
+        <button type="submit" class="btn btnn btn-primary update_supplier_btn" id='upsubmit'><i class="fas fa-thumbs-up">&nbsp&nbsp</i>Update</button>
         <button type="button" class="btn btnn btn-danger" data-dismiss="modal"><i class="fas fa-ban">&nbsp&nbsp</i>Cancel</button>
       </div>
       </div>
@@ -104,24 +104,24 @@ function displayImg(input,_this) {
     }
 }
 
-$('.update_customer_form').submit(function(e){
+$('.update_supplier_form').submit(function(e){
   e.preventDefault();
-  
+
   const fd = new FormData(this);
-  $(".update_customer_btn").text('Updating....');
+  $(".update_supplier_btn").text('Updating....');
     $.ajax({
-      url: '{{ route('update.customer') }}',
+      url: '{{ route('update.supplier') }}',
       method: 'post',
       data: fd,
       cache: false,
       processData:false,
       contentType:false,
       success:function(resp){
-        alert(resp)
+        //alert(resp)
         if(resp.status == 200){
           Swal.fire(
             'Update',
-            'Customer Updated Successfully!',
+            'Supplier Updated Successfully!',
             'success'
           )
           setTimeout(function(){
@@ -129,9 +129,9 @@ $('.update_customer_form').submit(function(e){
        },1000)
         }
      
-       $('.update_customer_btn').text('Update');
-       $('.update_customer_form')[0].reset();
-       $('#updatecustomer').modal('hide');
+       $('.update_supplier_btn').text('Update');
+       $('.update_supplier_form')[0].reset();
+       $('#updatesupplier').modal('hide');
        
       }
     });

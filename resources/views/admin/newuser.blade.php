@@ -1,6 +1,6 @@
 @extends('master')
 @section("content")
-
+@section("title") {{ 'Customer' }} @endsection
 <main class="w-100">
     
 	<div class="col-lg-12">
@@ -13,11 +13,19 @@
 			<div class="col-md-12">
 				<div class="card">					
 					<div class="card-header bg-success text-white">
-					<b>List of Customer </b>	
+					<b>List of Users </b>	
         <!-- Button trigger modal -->
-            <span class="float:right"><a class="btn btn-primary btn-block btn-sm col-sm-2 float-right" href="javascript:void(0)" data-toggle="modal" 
-				data-target="#new_customer">
-					<i class="fa fa-plus"></i> New Customer </a></span>			
+            <span class="float:right"><a class="btn btn-primary btn-block btn-sm col-sm-2 float-right" href="{{ route('regist') }}">
+
+
+
+            	<!--  <a class="registration" href=""> </a> <br> -->
+
+
+
+
+
+					<i class="fa fa-plus"></i> {{ __('Create New Account') }} </a></span>			
 
 					</div>
 					<div class="card-body" style="font-size: 15px;">
@@ -41,53 +49,67 @@
 </div>
 
 
-@include("customer_update")
-@include("customer_form")
+@include("admin.newuser_update")
+
 
  
 {{-- employeeform --}}
 
 <script type="text/javascript">
 
-//fetch all employees
+
+//fetch all customer
 $(document).ready(function(){    
     showAllcustomer();
 
     function showAllcustomer(){
-        _tables("#showcustomer",'{{ route('fetchall.customer') }}','List of Customers Information'); 
+        _tables("#showcustomer",'{{ route('fetchnewuser') }}','List of Customers Information'); 
     }
   });
 
 //edit employee ajax request
-$(document).on('click','.update_customer',function(e){
+$(document).on('click','.edit_newuser',function(e){
   e.preventDefault();
   
-  alert('ok')
+  //alert('ok')
   let id = $(this).attr('data-id');
   //alert(id);
    
   $.ajax({
-		url: '{{ route('edit.customer') }}',
+		url: '{{ route('edit_newuser') }}',
 		method: 'get',
 		data:{id: id,
 		_token: '{{ csrf_token() }}'
 		},
  		success:function(resp){			
 
-	$('#up_id').val(resp.id);
-	$('#upfname').val(resp.FirstName);
-	$('#uplname').val(resp.LastName);
-	$('#upaddress').val(resp.Address);
-	$('#upnumber').val(resp.phonenumber);
-		
+	$('#id').val(resp.id);
+	$('#name').val(resp.name);
+	$('#email').val(resp.email);
+	$('#password').val(resp.password);
+	$('#role').val(resp.role);
+	$('#status').val(resp.status);
 		}
   });
 });
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 //delete employee information
-$(document).on('click', '.delete_customer', function(e){
+$(document).on('click', '.delete_newuser', function(e){
 	e.preventDefault();
 	let id = $(this).attr('data-id');
 	Swal.fire({
@@ -101,7 +123,7 @@ $(document).on('click', '.delete_customer', function(e){
 		}).then((result) => {
 			if (result.isConfirmed){
 				$.ajax({
-					url: '{{ route('delete.customer') }}',
+					url: '{{ route('deletes_newusers') }}',
 					method: 'post',
 					data: {
 					id: id,

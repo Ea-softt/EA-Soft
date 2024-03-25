@@ -14,8 +14,17 @@ use Illuminate\Support\Facades\Validator;
 class CustomerController extends Controller
 {
     //
+  public function dashboard(){
+    return view('customer.dashboard');
+  }
+  
+  
+  
+  
+  
+  
     public function displyCustomer(){
-        return view('customer');
+        return view('admin.customer');
     }
 
 
@@ -24,14 +33,14 @@ class CustomerController extends Controller
         
         $validator = Validator::make($request->all(),[
             'fname'=>'required',
-            'lname'=>'required',
+            // 'lname'=>'required',
             'address'=>'required',
             'number'=>'required',
             
 
         ],[
             'fname.required'=>'First Name is Required',
-            'lname.required'=>'Last Name is Required',
+            // 'lname.required'=>'Last Name is Required',
             'address.required'=>'Address is Required',
             'number.required'=>'Phone is Required',
            
@@ -44,7 +53,7 @@ class CustomerController extends Controller
             
             customer::insert([
                 'FirstName' => $request->fname,            
-                'LastName' => $request->lname, 
+                // 'LastName' => $request->lname, 
                 'Address' => $request->address,
                 'phonenumber' => $request->number,
                 
@@ -80,7 +89,7 @@ class CustomerController extends Controller
         foreach($cust as $cus){
                     $output .= '<tr>
                     <td>'.$cus->id.'</td>                    
-                    <td>'.$cus->FirstName.' '.$cus->LastName.'</>
+                    <td>'.$cus->FirstName.'</>
                     <td>'.$cus->Address.'</td>
                     <td>'.$cus->phonenumber.'</td>
                     <td> 

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-     <title>EA-Soft System</title>
-     <link  rel="shortcut icon" type="image/icon" href="public/favicon.ico">
+     <title>{{ config('app.name','ea_soft') }} - @yield('title') </title>
+     <link  rel="shortcut icon" type="image/icon" href="{{ url('assets/Ea-Soft.ico') }}">
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,12 +19,33 @@
       <script src="/assets/js/sweetalert2.all.js"></script>
       <script src="/assets/js/sweetalert2.all.min.js"></script>
       <script src="/assets/js/sweetalert2.js"></script>
+      <script src="/assets/js/datepicker.js"></script>
+      <script src="/assets/js/ddtf.js"></script>
+      <script src="/assets/js/accounting.min.js"></script>
       <link rel="stylesheet" type="text/css" href="{{ url('assets/css/datatables.min.css') }}">
       <link rel="stylesheet" type="text/css" href="{{ url('assets/css/datatables.css') }}">
+      <link rel="stylesheet" type="text/css" href="{{ url('assets/css/select2.min.css') }}">
       <link rel="stylesheet" type="text/css" href="{{ url('assets/css/bootstrap.min.css') }}">
       <link rel="stylesheet" type="text/css" href="{{ url('assets/css/bootstrap.css') }}">
-      <link rel="stylesheet" type="text/css" href="{{ url('assets/css/style.css') }}">
+      <link rel="stylesheet" type="text/css" href="{{ url('assets/css/style.css') }}"> 
+      <link rel="stylesheet" type="text/css" href="{{ url('assets/css/datepicker.css') }}">
 </head>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <style>
 
@@ -34,7 +55,7 @@
 /*0544189823 0597875910 */
   input[type=checkbox]
 
-  
+
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -115,10 +136,10 @@
 
   <body>
 
-    {{ View::make('header') }}
-    
+     {{ View::make('header') }}
+
     @yield('content')
-    
+
     {{-- {{ View::make('footer') }} --}}
 
   </body>
@@ -127,7 +148,7 @@
 
 
 
-  
+
 <script>
      $.ajaxSetup({
        headers: {
@@ -139,30 +160,30 @@
     //var timer = document.getElementById("show")
           var duration =1800;
           setInterval(updateTimer, 2000);
-    
+
           function updateTimer(){
             duration --;
             if (duration < 1){
-               
-                     
+
+
               window.location = "logout.php";
             }else{
               // console.log(duration);
             }
-            
+
             }
     window.addEventListener("mousemove", resetTimer);
       function resetTimer(){
-    
+
         duration = 1800;
-    
-          } 
-    
-    
+
+          }
+
+
     window.start_load = function(){
         $('body').prepend('<di id="preloader2"></di>')
-       
-    
+
+
       }
       window.end_load = function(){
         $('#preloader2').fadeOut('fast', function() {
@@ -186,12 +207,12 @@
                 keyboard:false,
                 focus:true
               })
-              end_load()  
-    
+              end_load()
+
     }
-    
-    
-      
+
+
+
       window.uni_modal = function($title = '', $url='',  $size=""){
         start_load()
         $.ajax({
@@ -208,7 +229,7 @@
                         $('#uni_modal .modal-dialog').addClass($size)
                     }else{
                         $('#uni_modal .modal-dialog').removeAttr("class").addClass("modal-dialog modal-lg")
-                    
+
                     }
                     $('#uni_modal').modal({
                       show:true,
@@ -226,7 +247,7 @@
           $('#alert_toast').removeClass('bg-danger')
           $('#alert_toast').removeClass('bg-info')
           $('#alert_toast').removeClass('bg-warning')
-    
+
         if($bg == 'success')
           $('#alert_toast').addClass('bg-success')
         if($bg == 'danger')
@@ -251,16 +272,16 @@
         placeholder:"Please select here",
         width: "100%"
       })
-    
+
       $('#alert_toast').toast({delay:1000}).toast('show');
-    
-    
+
+
       window._tables = function($viewnames ="", $urls='',  $titles=''){
      start_load()
       $.ajax({
-        url:$urls,        
+        url:$urls,
         type: "get",
-         method: 'get',        
+         method: 'get',
         success:function(resp){
           $($viewnames).html(resp);
             $('table').DataTable( {
@@ -272,8 +293,8 @@
                 { type: "num-fmt", symbols:"R$" , targets: 4 }
             ],
             buttons: [
-                
-              
+
+
 
 
                 { extend: 'copyHtml5',
@@ -287,7 +308,7 @@
 
 
 
-                {extend: 'excelHtml5', 
+                {extend: 'excelHtml5',
                 text: '<i class="fas fa-file-excel"></i> ',
                   titleAttr: 'Export a Excel',
                    title: $titles,
@@ -296,7 +317,7 @@
 
 
 
-                {extend: 'pdf', 
+                {extend: 'pdf',
                  text: '<i class="fas fa-file-pdf"></i> ',
                   titleAttr: 'Export a Pdf',
                    title: $titles,
@@ -321,55 +342,160 @@
                     }
                 }
         ]
-    } );  
+    } );
 
 
         }
 
       });
-     
+
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+     window._table = function($viewnames ="", $urls='',  $titles=''){
+     start_load()
+      $.ajax({
+        url:$urls,
+        type: "get",
+         method: 'get',
+        success:function(resp){
+          $($viewnames).html(resp);
+          $('#mytable').ddTableFilter();
+        }
+
+      });
+
+    }
+
+
+window._deletes = function (id, $urls='', $titl=''){   
+  start_load()
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed){
+                $.ajax({
+                    url:$urls,
+                    method: 'post',
+                    data: {
+                    id: id,
+                    _token: '{{ csrf_token() }}'
+                    },
+                    success:function(resp){
+                      //alert(resp.stat);
+                      if (resp.stat == 'success' ) {
+                        Swal.fire(
+                            'Deleted!',
+                            +$titl+ 'Deleted Successfully!.',
+                            'success'
+                        )
+                        setTimeout(function(){
+                            location.reload()
+                            },1000)
+                    }
+                    }
+                });
+            }
+        });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // function runbackup(){
     //         $.ajax({
-    //             url: "backupage.php",                
+    //             url: "backupage.php",
     //             method: 'POST',
-    //             type: 'POST',           
+    //             type: 'POST',
     //             success:function(data){
     //             }
-    
-    
+
+
     //         });
     // }
+function out(){
+  var lag = "logout";
+
     
-    
-    
-    
-    
-    
-    //       var dura =10 ;
-    //       setInterval(updateTime, 2000);
-    
-    //       function updateTime(){
-    //         dura --;
-    //         if (dura < 1){          
-             
-    //             runbackup()
-               
-              
-    //         }else{
-    //          console.log(dura);
-    //         }
-            
-    //         }
-    
-    </script> 
+   
+        if(lag){
+            $.ajax({
+              type: 'post',
+              data: {
+                logout:lag
+              },
+              url: '{{ route('logouts') }}',
+
+              success: function (data){
+                //alert(data);
+               // window.location.href='{{ route('logouts') }}';
+              }
+            });
+        }
+      
+  
+};
+
+
+
+
+  $(document).ready(function(){    
+   
+
+      var dura =10 ;
+          setInterval(updateTime, 2000);
+
+          function updateTime(){
+
+            dura --;
+            if (dura < 1){
+                //out();
+
+            }else{
+            // console.log(dura);
+            }
+
+            }
+
+  });
+
+
+
+
+
+
+
+
+
+  
+        
+
+    </script>
 </html>

@@ -16,16 +16,16 @@
 
                   
         <div class="form-group">
-          <label class="">First Name:</label>
-          <input class="form-control"  type="text" id="fname" name="fname" placeholder="First Name"  value="<?php isset ($Employer)? $Employer :''?>">			
+          <label class="">Full Name:</label>
+          <input class="form-control"  type="text" id="fname" name="fname" placeholder="Full Name"  value="<?php isset ($Employer)? $Employer :''?>">			
           <span class="text-danger error-text fname_error"></span>
         </div>
 
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label class="">Last Name:</label>
           <input class="form-control"  type="text" id="lname" name="lname" placeholder="Last Name"  value="<?php isset ($Employer)? $Employer :''?>">			
           <span class="text-danger error-text lname_error"></span>
-        </div>
+        </div> -->
 
                   
         <div class="form-group">
@@ -118,17 +118,6 @@ $("#new_customer_form").submit(function(e){
  })
   
 });
-
-
-
-
-
-
-
-
-
-
-
 
 
 

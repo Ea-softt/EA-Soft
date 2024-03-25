@@ -6,7 +6,7 @@ html,body{
 	height: 100%;
 }
 .main{
-	margin-top: 10%;	
+	margin-top: 10%;
 }
 #admin, #user{
 	border:2px solid;
@@ -20,7 +20,7 @@ html,body{
 	display: grid;
 	grid-template-columns: auto 38%;
 	grid-template-rows: 20% auto 10%;
-	grid-template-areas: 
+	grid-template-areas:
 	"header header"
 	"content sidebar"
 	"footer footer";
@@ -51,6 +51,13 @@ ul li{
 	grid-template-rows: auto 15%;
 }
 #price_column{
+    display: grid;
+	border:1px solid black;
+	background-color: white;
+}
+#price_colum{
+    padding-bottom:300px;
+    display: grid;
 	border:2px solid black;
 	background-color: white;
 }
@@ -72,7 +79,7 @@ ul li{
 	float: right;
 }
 #product_area{
-	background-color: white;
+	background-color: lightgray;
 	border:2px solid black;
 	margin-top: 0px;
 }
